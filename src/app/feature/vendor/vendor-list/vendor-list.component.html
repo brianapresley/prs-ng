@@ -1,0 +1,35 @@
+<table class="table table-striped" *ngIf='vendors'>
+        <thead>
+            <tr>
+            <th><a (click)="sortBy('id')"><u>ID</u></a></th>
+            <th><a (click)="sortBy('Code')"><u>Code</u></a></th>
+            <th><a (click)="sortBy('Name')"><u>Name</u></a></th>
+            <th><a (click)="sortBy('Address')"><u>Address</u></a></th>
+            <th><a (click)="sortBy('City')"><u>City</u></a></th>
+            <th><a (click)="sortBy('State')"><u>State</u></a></th>
+            <th><a (click)="sortBy('Zip')"><u>Zip</u></a></th>
+            <th><a (click)="sortBy('Phone')"><u>Phone</u></a></th>
+            <th><a (click)="sortBy('Email')"><u>Email</u></a></th>
+
+
+
+
+    
+        </tr>
+        <tr *ngFor='let v of vendors | sort:sortCriteria:sortOrder'>
+                
+            <td>{{v.id}}</td>
+            <td>{{v.code}}</td>
+            <td>{{v.name}}</td>
+            <td>{{v.address}}</td>
+            <td>{{v.city}}</td>
+            <td>{{v.state}}</td>
+            <td>{{v.zip}}</td>
+            <td>{{v.phone}}</td>
+            <td>{{v.email}}</td>
+
+
+
+        </tr>
+        </thead>
+    </table>
