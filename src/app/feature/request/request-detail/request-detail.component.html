@@ -1,1 +1,46 @@
-<p>request-detail works!</p>
+<div class='component-content'>
+    <div class=''>
+      <div class='lefthalf'>
+        <span class='component-title'>[{{title}}]</span>
+        <span><a routerLink='/request/list'>Back to list</a></span>
+      </div>
+    </div>
+    <table class="table table-sm" *ngIf='request'>
+      <tr>
+        <td>ID</td>
+        <td>{{ request.id }}</td>
+      </tr>
+      <tr>
+        <td>User</td>
+        <td>{{ request.user.username }}</td>
+      </tr>
+      <tr>
+        <td>Description</td>
+        <td>{{ request.description }}</td>
+      </tr>
+      <tr>
+        <td>Justification</td>
+        <td>{{ request.justification }}</td>
+      </tr>
+      <tr>
+        <td>Delivery Mode</td>
+        <td>{{ request.deliveryMode }}</td>
+      </tr>
+      <tr>
+        <td>Status</td>
+        <td>{{ request.status }}</td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td>{{ request.total }}</td>
+      </tr>
+      <tr>
+        <td colspan="2">
+            <!-- <a *ngIf='loggedInproduct.admin || loggedInproduct.productName == product.productName' routerLink='/product/edit/{{product.id}}' class='btn btn-primary' title='Edit' style='margin-right: 5px'>Edit</a> -->
+            <!-- <button *ngIf='loggedInproduct.admin' (click)="remove()" class='btn btn-danger' title='Delete'>Remove</button> -->
+            <a routerLink='/request/edit/{{request.id}}' class='btn btn-primary' title='Edit' style='margin-right: 5px'>Edit</a>
+          <button (click)="remove()" class='btn btn-danger' title='Delete'>Remove</button>
+        </td>
+      </tr>
+    </table>
+  </div>

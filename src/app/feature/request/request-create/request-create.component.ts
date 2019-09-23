@@ -14,7 +14,8 @@ export class RequestCreateComponent implements OnInit {
   request: Request = new Request();
   title: string = 'Request-Create';
   user: User;
-  dm: string[] = ['Mail','Pickup']
+  dm: string[] = ['Mail','Pickup'];
+  status: string[] = ['New', 'Request Denied', 'Pending', 'Approved']
   constructor(private requestSvc: RequestService, 
               private sysSvc: SystemService,
               private router: Router) { }

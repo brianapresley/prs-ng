@@ -1,1 +1,66 @@
-<p>vendor-edit works!</p>
+<div id='component'>
+    <div id='pagetitle'>
+      <span>[{{title}}]</span>
+    </div>
+    <p *ngIf='!vendor'>Loading...</p>
+    <div *ngIf='vendor'>
+  ​
+      <div class="form-group row">
+        <label class='col-form-label col-sm-2' for="vendorid">ID:</label>
+        <input readonly [(ngModel)]='vendor.id' name='vendorid' type="text" class="form-control col-sm-6" id="vendorid"
+          aria-describedby="vendoridHelp" placeholder="Vendor ID">
+        <small id="vendoridHelp" class="form-text text-muted col-sm-2">Vendor ID</small>
+      </div>
+      <div class="form-group row">
+        <label class='col-form-label col-sm-2' for="vendorcode">Vendor Code:</label>
+        <input [(ngModel)]='vendor.code' name='Code' type="text" class="form-control col-sm-6" id="vendorcode"
+          aria-describedby="vcodeHelp" placeholder="Vendor Code">
+        <small id="vcodeHelp" class="form-text text-muted col-sm-2">Vendor Code</small>
+      </div>
+      <div class="form-group row">
+        <label class='col-form-label col-sm-2' for="vendorname">Vendor:</label>
+        <input [(ngModel)]='vendor.name' name='VendorName' type="text" class="form-control col-sm-6" id="vendorname"
+          aria-describedby="vnameHelp" placeholder="VendorName">
+        <small id="vnameHelp" class="form-text text-muted col-sm-2">Vendor</small>
+      </div>
+      <div class="form-group row">
+        <label class='col-form-label col-sm-2' for="address">Address:</label>
+        <input [(ngModel)]='vendor.address' name='Address' type="text" class="form-control col-sm-6" id="address"
+          aria-describedby="addressHelp" placeholder="Address">
+        <small id="addressHelp" class="form-text text-muted col-sm-2">Vendor's Address</small>
+      </div>
+      <div class="form-group row">
+        <label class='col-form-label col-sm-2' for="city">City:</label>
+        <input [(ngModel)]='vendor.city' name='City' type="text" class="form-control col-sm-6" id="city"
+          aria-describedby="cityHelp" placeholder="City">
+        <small id="cityHelp" class="form-text text-muted col-sm-2">City</small>
+      </div>
+      <div class="form-group row">
+        <label class='col-form-label col-sm-2' for="state">State:</label>
+        <input [(ngModel)]='vendor.state' name='State' type="text" class="form-control col-sm-6" id="state"
+          aria-describedby="stateHelp" placeholder="State">
+        <small id="stateHelp" class="form-text text-muted col-sm-2">State</small>
+      </div>
+      <div class="form-group row">
+        <label class='col-form-label col-sm-2' for="phone">Zip:</label>
+        <input [(ngModel)]='vendor.zip' name='Zip' type="text" class="form-control col-sm-6" id="zip"
+          aria-describedby="zipHelp" placeholder="Zip Code">
+        <small id="zipHelp" class="form-text text-muted col-sm-2">Zip Code</small>
+      </div>
+      <div class="form-group row">
+        <label class='col-form-label col-sm-2' for="phone">Phone Number:</label>
+        <input [(ngModel)]='vendor.phone' name='Phone' type="text" class="form-control col-sm-6" id="phone"
+          aria-describedby="phoneHelp" placeholder="Phone">
+        <small id="phoneHelp" class="form-text text-muted col-sm-2">Phone Number</small>
+      </div>
+      <div class="form-group row">
+        <label class='col-form-label col-sm-2' for="email">Email:</label>
+        <input [(ngModel)]='vendor.email' name='Email' type="text" class="form-control col-sm-6" id="email"
+          aria-describedby="emailHelp" placeholder="Email">
+        <small id="emailHelp" class="form-text text-muted col-sm-2">Email</small>
+      </div>
+      <div class='form-group'>
+        <button (click)='edit();' class='btn btn-primary'>Update</button>
+      </div>
+    </div>
+  </div>

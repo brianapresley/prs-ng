@@ -1,1 +1,50 @@
-<p>request-edit works!</p>
+<div id='component'>
+    <div id='pagetitle'>
+      <span>[{{title}}]</span>
+    </div>
+    <p *ngIf='!request'>Loading...</p>
+    <div *ngIf='request'>
+  ​
+      <div class="form-group row">
+        <label class='col-form-label col-sm-2' for="requestid">Request ID:</label>
+        <input readonly [(ngModel)]='request.id' name='requestid' type="text" class="form-control col-sm-6" id="requestid"
+           aria-describedby="requestidHelp" placeholder="Request ID">
+        <small id="requestidHelp" class="form-text text-muted col-sm-2">Request ID</small>
+      </div>
+      <div class="form-group row">
+        <label class='col-form-label col-sm-2' for="username">User:</label>
+        <input readonly [(ngModel)]='request.user.username' name='Username' type="text" class="form-control col-sm-6" id="username"
+          aria-describedby="unameHelp" placeholder="Username">
+        <small id="unameHelp" class="form-text text-muted col-sm-2">Requestor User Name</small>
+      </div>
+      <div class="form-group row">
+        <label class='col-form-label col-sm-2' for="requestdescription">Description:</label>
+        <input [(ngModel)]='request.description' name='Description' type="text" class="form-control col-sm-6" id="requestdescription"
+          aria-describedby="descHelp" placeholder="Description">
+        <small id="descHelp" class="form-text text-muted col-sm-2">Request Description</small>
+      </div>
+      <div class="form-group row">
+        <label class='col-form-label col-sm-2' for="requestjustification">Justification:</label>
+        <input [(ngModel)]='request.justification' name='requestjustification' type="text" class="form-control col-sm-6" id="requestjustification"
+          aria-describedby="justificationHelp" placeholder="Justification">
+        <small id="justificationHelp" class="form-text text-muted col-sm-2">Request Justification</small>
+      </div>
+      <div class='form-group row'>
+        <label class='col-form-label col-sm-2' for="request">Delivery Method:</label>
+        <div class=' col-sm-6'>
+          <!-- Select tag creates a dropdown box of delivery modes -->
+          <select [(ngModel)]='request.deliveryMode' class='form-control' name='deliveryMode' id='deliveryMode'>  
+            <option *ngFor="let m of dm" [ngValue]="m">{{m}}</option>
+          </select> 
+        </div>
+      </div>
+        <div class='form-group row'>
+            <label class=' col-form-label col-sm-2' for="request">Status:</label>
+            <input readonly [(ngModel)]='request.status' name='Status' type="text" class="form-control col-sm-6"
+             id="requestStatus" aria-describedby="StatusHelp" placeholder="New">
+             <small id="StatusHelp" class="form-text text-muted col-sm-2">Status</small>
+          </div>
+    <div class='form-group'>
+        <button (click)='edit();' class='btn btn-primary'>Update</button>
+      </div>
+  </div>

@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 import { VendorService } from '@svc/vendor.service';
 import { Vendor } from '@model/vendor.class';
 
