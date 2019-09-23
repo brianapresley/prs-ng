@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RequestService } from '@svc/request.service';
 import { Request } from '@model/request.class';
+import { UserService } from '@svc/user.service';
 
 @Component({
   selector: 'app-request-list',
@@ -13,7 +14,8 @@ export class RequestListComponent implements OnInit {
   sortOrder = 'asc';
   title ='Request List';
 
-  constructor(private requestSvc: RequestService) { }
+  constructor(private requestSvc: RequestService,
+              private userSvc: UserService) { }
 
   ngOnInit() {
     //populate list of requests
