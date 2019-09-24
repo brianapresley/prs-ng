@@ -1,0 +1,76 @@
+<div class='component-content'>
+    <div class=''>
+      <div class='lefthalf'>
+        <span class='component-title'>[{{title}}]</span>
+        <span><a routerLink='/request/list'>Back to list</a></span>
+      </div>
+    </div>
+    <p *ngIf='!request'>Loading ...</p>
+    <table class="table table-sm" *ngIf='request'>
+      <tr>
+        <th class='table-secondary'></th>
+        <th class="table-secondary"><a class="btn btn-link font-weight-bold"
+            >Request ID</a></th>
+        <th class="table-secondary"><a class="btn btn-link font-weight-bold"
+            >User</a></th>
+        <th class="table-secondary"><a class="btn btn-link font-weight-bold"
+            >Description</a></th>
+        <th class="table-secondary"><a class="btn btn-link font-weight-bold"
+            >Justification</a></th>
+        <th class="table-secondary"><a class="btn btn-link font-weight-bold"
+            >Delivery Mode</a></th>
+        <th class="table-secondary"><a class="btn btn-link font-weight-bold"
+            >Status</a></th>
+        <th class="table-secondary"><a class="btn btn-link font-weight-bold"
+            >Total</a></th>
+        <th class="table-secondary"><a class='btn btn-link font-weight-bold'
+            >Action</a></th>
+      </tr>
+      
+      <tr>
+          
+          <td></td>
+          <td>{{request.id}}</td>
+          <td>{{request.user.username}}</td>
+          <td>{{request.description}}</td>
+          <td>{{request.justification}}</td>
+          <td>{{request.deliveryMode}}</td>
+          <td>{{request.status}}</td>
+          <td>{{request.total | currency}}</td>
+          
+          
+        </table>
+
+
+    <table class="table table-sm" *ngIf="request">
+            <th class="table-secondary"><a class="btn btn-link font-weight-bold">Product</a></th>
+            <th class="table-secondary"><a class="btn btn-link font-weight-bold">Quantity</a></th>
+            <th class="table-secondary"><a class="btn btn-link font-weight-bold">Price/Unit</a></th>
+            <th class="table-secondary"><a class="btn btn-link font-weight-bold">Total</a></th>
+            <th class="table-secondary"><a class="btn btn-link font-weight-bold">Action</a></th>
+
+
+        <tbody>
+      <tr *ngFor="let line of request.requestLines">
+          <td>{{line.product.name}}</td>
+          <td>{{line.product.Quantity}}</td>
+          <td>{{line.product.price | currency}}</td>
+          <td>{{line.product.total | currency}}</td>
+          <td class='actions'>
+            <a routerLink='/request/request-line/edit/{{request.id}}' class='actionIcon'><img src='assets/pencil-icon.png' width='20' height='20' title='Edit'></a>
+            <!-- <a routerLink='/request/request-line/{{request-line.id}}' class='actionIcon'><img src='assets/delete.jpg' width='20' height='20' title='Lines'></a> -->
+          </td>
+
+
+      </tr>
+      <tr>
+        <td colspan="2">
+            <!-- <a *ngIf='loggedInproduct.admin || loggedInproduct.productName == product.productName' routerLink='/product/edit/{{product.id}}' class='btn btn-primary' title='Edit' style='margin-right: 5px'>Edit</a> -->
+            <!-- <button *ngIf='loggedInproduct.admin' (click)="remove()" class='btn btn-danger' title='Delete'>Remove</button> -->
+            <a routerLink='/request/edit/{{request.id}}' class='btn btn-primary' title='Edit' style='margin-right: 5px'>Edit</a>
+          <button (click)="remove()" class='btn btn-danger' title='Delete'>Remove</button>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+  </div>

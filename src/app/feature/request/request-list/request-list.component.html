@@ -36,10 +36,12 @@
       <td>{{request.justification}}</td>
       <td>{{request.deliveryMode}}</td>
       <td>{{request.status}}</td>
-      <td>{{request.total}}</td>
+      <td>{{request.total | currency}}</td>
+      <td>{{request.privilege}}</td>
       <td class='actions'>
         <a routerLink='/request/detail/{{request.id}}' style='padding-left: 16px' class='actionIcon'><img src='assets/details.png' width='20' height='20' title='Detail'></a>
         <a routerLink='/request/edit/{{request.id}}' class='actionIcon'><img src='assets/pencil-icon.png' width='20' height='20' title='Edit'></a>
+        <a routerLink='/request/request-line/{{request.id}}' class='actionIcon'><img src='assets/lines.png' width='20' height='20' title='Lines'></a>
         <!-- <a *ngIf='loggedInUser.admin' routerLink='/request/edit/{{request.id}}' class='actionIcon'><img src='assets/pencil-icon.png' width='20' height='20' title='Edit'></a> -->
       </td>
     </tr>

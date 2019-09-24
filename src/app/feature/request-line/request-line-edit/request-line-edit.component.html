@@ -1,0 +1,37 @@
+<div class='component-content'>
+        <div>
+          <span class='component-title'>[{{title}}]</span>
+          <span><a routerLink='/request/request-line/'>Back to list</a></span>
+        </div>
+        <p *ngIf='!requestLine'>Loading...</p>
+      
+        <div *ngIf='requestLine&&requestLine.product'>
+          <hr />
+          <div class="form-group row">
+            <label class='col-form-label col-sm-2' for="product">Product:</label>
+            <div class='col-sm-6 select-list'>
+              <select [(ngModel)]='requestLine.product.id' [compareWith]='compareFn' class='form-control' name='Product'
+                id='requestLine-Product'>
+                <option *ngFor="let product of products" [ngValue]="product.id" [selected]="product.id == requestLine.product.id">
+                  {{product.name}}
+                </option>
+              </select>
+            </div>
+          </div>
+          <hr />
+          <div class="form-group row">
+          <label class='col-form-label col-sm-2' for="qty">Qty:</label>
+          <input [(ngModel)]='requestLine.product.qty' name='Qty' type="text" class="form-control col-sm-6" id="qty"
+                 aria-describedby="QtyHelp" placeholder="Qty">
+          </div>
+          <hr />
+          <div class="form-group row">
+            <label class='col-form-label col-sm-2' for="price">Price:</label>
+            <input [(ngModel)]='requestLine.product.price' name='Price' type="text" class="form-control col-sm-6" id="price"
+            aria-describedby="PriceHelp" placeholder="Price">
+          </div>
+          <hr />
+          <div class="form-group row">
+             <label class='col-form-label col-sm-2' for="price">Price:</label>
+             
+          </div>

@@ -11,8 +11,10 @@ export class Request {
     userId: number;
     user: User;
 
-    constructor(id:number = 0, description:string = '', justification:string = '', rejectionreason:string = '', 
-                deliverymode:string = 'Pickup', status:string = 'New', total:number = 0, userId:number = 0, user:User= new User(), 
+    constructor(id:number = 0, description:string = '', justification:string = '', 
+                rejectionreason:string = '', deliverymode:string = 'Pickup', 
+                status:string = 'New', total:number = 0, userId:number = 0, 
+                user:User= new User() 
                 ) {
         this.id = id;
         this.description = description;
