@@ -1,1 +1,43 @@
-<p>request-line-create works!</p>
+<div class='component-content'>
+    <div id='pagetitle'>
+        <span class='component-title'>[{{title}}] | </span>
+        <span><a routerLink='/request/request-line/{{rid}}'>Back to list</a></span>
+    </div>
+    <p *ngIf='undefined'>Loading ...</p>
+    <div *ngIf='requestLine'>
+        <hr />
+        <div class='form-group row'>
+            <label class='col-form-label col-sm-2' for="product">Product:</label>
+            <div class=' col-sm-6 select-list'>
+                <!-- Select tag creates a dropdown box of products -->
+                <select [(ngModel)]='requestLine.productId' [compareWith]='compareFn' class='form-control' name='Product'
+                    id='requestLine-Product'>
+                    <option *ngFor="let product of products" [ngValue]="product.id"
+                        [selected]="product.id == requestLine.productId">{{product.name}}</option>
+                </select>
+            </div>
+        </div>
+        <hr />
+        <div class="form-group row">
+            <label class='col-form-label col-sm-2' for="qty">Qty:</label>
+            <input [(ngModel)]='requestLine.quantity' name='Qty' type="text" class="form-control col-sm-6" id="qty"
+                aria-describedby="QtyHelp" placeholder="Qty">
+        </div>
+        <hr />
+        <!-- <div class="form-group row">
+            <label class='col-form-label col-sm-2' for="price">Price:</label>
+            <input [(ngModel)]='requestLine.product.price' name='Price' type="text" class="form-control col-sm-6"
+                id="price" aria-describedby="PriceHelp" placeholder="Price">
+        </div>
+        <hr />
+        <div class="form-group row">
+            <label class='col-form-label col-sm-2' for="total">Total:</label>
+            <input [ngModel]="" name='Total' type="number" class="form-control col-sm-6" id="total"
+                aria-describedby="TotalHelp" placeholder="Total">
+        </div> -->
+        <hr />
+        <div class='form-group'>
+            <button (click)='create()' class='btn btn-primary'>Add</button>
+        </div>
+    </div>
+</div>

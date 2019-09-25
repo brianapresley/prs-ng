@@ -1,7 +1,7 @@
 <div class='component-content'>
         <div>
           <span class='component-title'>[{{title}}]</span>
-          <span><a routerLink='/request/request-line/'>Back to list</a></span>
+          <span><a routerLink='/request/request-line/request.id'>Back to list</a></span>
         </div>
         <p *ngIf='!requestLine'>Loading...</p>
       
@@ -21,7 +21,7 @@
           <hr />
           <div class="form-group row">
           <label class='col-form-label col-sm-2' for="qty">Qty:</label>
-          <input [(ngModel)]='requestLine.product.qty' name='Qty' type="text" class="form-control col-sm-6" id="qty"
+          <input [(ngModel)]='requestLine.quantity' name='Qty' type="text" class="form-control col-sm-6" id="qty"
                  aria-describedby="QtyHelp" placeholder="Qty">
           </div>
           <hr />
@@ -32,6 +32,11 @@
           </div>
           <hr />
           <div class="form-group row">
-             <label class='col-form-label col-sm-2' for="price">Price:</label>
-             
+             <label class='col-form-label col-sm-2' for="total">Total:</label>
+             <input [ngModel]="" name='Total' type="number" class="form-control col-sm-6" id="total"
+            aria-describedby="TotalHelp" placeholder="Total">
+          </div>
+          <hr />
+          <div class='form-group'>
+            <button (click)='edit()' class='btn btn-primary'>Update</button>
           </div>

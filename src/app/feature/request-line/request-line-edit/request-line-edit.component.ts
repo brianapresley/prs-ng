@@ -12,7 +12,8 @@ import { ProductService } from '@svc/product.service';
 })
 export class RequestLineEditComponent implements OnInit {
   requestLine: RequestLine;
-  id: number;
+  rlid: number;
+  rid: number;
   title: string = 'Request Line-Edit';
   request: Request;
   products: Product[];
@@ -23,9 +24,10 @@ export class RequestLineEditComponent implements OnInit {
                private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.route.params.subscribe(params => this.id = params.id);
-    this.rlSvc.get(this.id).subscribe(resp => {
+    this.route.params.subscribe(params => this.rlid = params.id);
+    this.rlSvc.get(this.rlid).subscribe(resp => {
       this.requestLine = resp as RequestLine;
+      this.rid = this.requestLine.requestId;
       this.productSvc.list().subscribe(presp => {
         this.products = presp as Product[];
       });
@@ -36,7 +38,7 @@ export class RequestLineEditComponent implements OnInit {
     this.requestLine.product = null;
     this.rlSvc.edit(this.requestLine).subscribe(resp => {
       this.requestLine = resp as RequestLine;
-      this.router.navigate(['/request-line/list']);
+      this.router.navigateByUrl('/request/request-line/'+this.rid);
     });
   }
 
@@ -44,4 +46,5 @@ export class RequestLineEditComponent implements OnInit {
     return p1 === p2;
   }
 
+  
 }
