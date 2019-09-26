@@ -3,21 +3,23 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Request } from '../model/request.class';
 
+
 @Injectable({
   providedIn: 'root'
 })
-export class RequestService {
-  url:string = 'http://localhost:50362/api/request';
+export class ReviewService {
+  url:string = 'http://localhost:50362/api/getrequestsforreview';
+
   constructor(
     private http: HttpClient
-  ) {}
-  review(id): Observable<Request> {
-    return this.http.get(this.url+'/Review/'+id) as Observable<any>;
+  ) { }
+  review(id): Observable<Request[]> {
+    return this.http.get(this.url+'/'+id) as Observable<Request[]>;
   }
-  reviews(uid): Observable<Request[]> {
-    return this.http.get(this.url+'/Reviews/'+uid) as Observable<Request[]>;
+  reviews(uid): Observable<Request> {
+    return this.http.get(this.url+'ReviewList/'+uid) as Observable<Request>;
   }
-
+  
   list(): Observable<Request[]> {
     return this.http.get(this.url) as Observable<Request[]>;
   }
@@ -29,15 +31,6 @@ export class RequestService {
   }
   edit(request: Request ): Observable<any> {
     return this.http.put(this.url+"/"+request.id, request) as Observable<any>;
-  }
-  submit(request: Request ): Observable<any> {
-    return this.http.put(this.url+"/"+request.id, request) as Observable<any>;
-  }
-  approve(request: Request ): Observable<any> {
-    return this.http.put(this.url+"/"+request.id, request) as Observable<any>;
-  }
-  reject(request: Request ): Observable<any> {
-      return this.http.put(this.url+"/"+request.id, request) as Observable<any>;
   }
   delete(id: number ): Observable<any> {
     return this.http.delete(this.url+"/"+id);

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RequestService } from '@svc/request.service';
 import { Request } from '@model/request.class';
 import { UserService } from '@svc/user.service';
+import { Router, ActivatedRoute } from '@angular/router';
+
 
 @Component({
   selector: 'app-request-list',
@@ -10,12 +12,15 @@ import { UserService } from '@svc/user.service';
 })
 export class RequestListComponent implements OnInit {
   requests: Request[];
+  status: string;
+  request: Request;
   sortCriteria = 'request';
   sortOrder = 'asc';
   title ='Request List';
 
   constructor(private requestSvc: RequestService,
-              private userSvc: UserService) { }
+              private userSvc: UserService,
+              private router: Router) { }
 
   ngOnInit() {
     //populate list of requests
@@ -26,12 +31,10 @@ export class RequestListComponent implements OnInit {
       }
     );
   }
-  sortBy(column: string): void {
-    if (this.sortCriteria === column) {
-      this.sortOrder = (this.sortOrder === 'asc' ? 'desc' : 'asc');
-    } else {
-      this.sortCriteria = column;
-      this.sortOrder = 'asc';
-    }
+submit() {
+    this.request.status = "Review";
+    this.requestSvc.submit(this.request).subscribe(resp => {
+      this.router.navigateByUrl('/review/list')
+    });
   }
 }

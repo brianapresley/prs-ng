@@ -51,9 +51,7 @@
             <th class="table-secondary"><a class="btn btn-link font-weight-bold">Price/Unit</a></th>
             <th class="table-secondary"><a class="btn btn-link font-weight-bold">Total</a></th>
             <th class="table-secondary"><a class="btn btn-link font-weight-bold">Action</a></th>
-
-
-        <tbody>
+      <tbody>
       <tr *ngFor="let line of request.requestLines">
           <td>{{line.product.name}}</td>
           <td>{{line.quantity}}</td>
@@ -70,8 +68,7 @@
         <td colspan="2">
             <!-- <a *ngIf='loggedInproduct.admin || loggedInproduct.productName == product.productName' routerLink='/product/edit/{{product.id}}' class='btn btn-primary' title='Edit' style='margin-right: 5px'>Edit</a> -->
             <!-- <button *ngIf='loggedInproduct.admin' (click)="remove()" class='btn btn-danger' title='Delete'>Remove</button> -->
-            <a routerLink='/request/edit/{{request.id}}' class='btn btn-primary' title='Edit' style='margin-right: 5px'>Edit</a>
-          <button (click)="remove()" class='btn btn-danger' title='Delete'>Remove</button>
+          <button (click)='submit()' class='btn btn-primary'>Submit for Review</button>
         </td>
       </tr>
     </tbody>

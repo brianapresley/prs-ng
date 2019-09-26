@@ -30,6 +30,8 @@ import { RequestLineCreateComponent } from './feature/request-line/request-line-
 import { RequestLineEditComponent } from './feature/request-line/request-line-edit/request-line-edit.component';
 import { RequestLineListComponent } from './feature/request-line/request-line-list/request-line-list.component';
 import { RequestLineDetailComponent } from './feature/request-line/request-line-detail/request-line-detail.component';
+import { ReviewListComponent } from './feature/review/review-list/review-list.component';
+import { ReviewEditComponent } from './feature/review/review-edit/review-edit.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +58,10 @@ import { RequestLineDetailComponent } from './feature/request-line/request-line-
     RequestLineCreateComponent,
     RequestLineEditComponent,
     RequestLineListComponent,
-    RequestLineDetailComponent
+    RequestLineDetailComponent,
+    ReviewListComponent,
+    ReviewEditComponent
+   
   ],
   imports: [
     BrowserModule,

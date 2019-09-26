@@ -36,6 +36,13 @@ export class RequestLineListComponent implements OnInit {
     });
 
   }
+  submit() {
+    this.request.status = "Review";
+    this.requestSvc.submit(this.request).subscribe(resp => {
+      this.router.navigateByUrl('/request/list')
+    });
+  }
+
   // create() {
   //   this.requestLine.requestId = this.request.id;
   //   this.requestLine.request = null;
