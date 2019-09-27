@@ -37,9 +37,17 @@ export class ReviewEditComponent implements OnInit {
   }
   reject() {
     this.request.status = "Declined";
+    console.log("Request B4 Reject:", this.request);
+    this.rSvc.reject(this.request).subscribe(resp => {
+      console.log(this.request)
+    });
+  }
+  savereject() {
+    this.request.status = "Declined";
     this.rSvc.reject(this.request).subscribe(resp => {
       this.router.navigateByUrl('/review/list')
-    });
+    })
+  
   }
 }
 

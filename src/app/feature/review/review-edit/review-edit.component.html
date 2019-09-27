@@ -21,6 +21,8 @@
                         >Status</a></th>
                     <th class="table-secondary"><a class="btn btn-link font-weight-bold"
                         >Total</a></th>
+                    <th *ngIf="request.status == 'Declined'" class="table-secondary"><a class="btn btn-link font-weight-bold"
+                        >Rejection Reason</a></th>
             </tr>
             <tr>
                     
@@ -30,11 +32,12 @@
                     <td>{{request.justification}}</td>
                     <td>{{request.deliveryMode}}</td>
                     <td>{{request.status}}</td>
-                    <td>{{request.total | currency}}</td>
-            </tr>
+                    <td>{{request.total}}</td>
+
+                </tr>
     </table>
 
-<table  class="table table-sm">
+<table *ngIf="request"  class="table table-sm">
 <tr>
         <th class="table-secondary"><a class="btn btn-link font-weight-bold">Product</a></th>
         <th class="table-secondary"><a class="btn btn-link font-weight-bold">Quantity</a></th>
@@ -48,11 +51,20 @@
                 <td>{{line.product.price * line.quantity | currency}}</td>
             </tr> 
             <tr>
-                <td colspan="2">
+                
                     <button (click)='approve()' class='btn btn-primary'>Approve</button>
                 
-                    <button (click)='reject()' class='btn btn-danger'>Decline</button>
-                </td>
+        
+                    <button  class='btn btn-danger' (click)='reject()'>Decline</button>
+                
+                
+                    <input [(ngModel)]='request.rejectionReason' name='rejectionReason' 
+                               type="text" class="form-control col-sm-6" id="rejectionReason" 
+                               aria-describedby="rejectHelp" placeholder="Rejection Reason">
+
+                    <button (click)='savereject()'>Save</button>
+                   
+                
             </tr>
      
     </table>

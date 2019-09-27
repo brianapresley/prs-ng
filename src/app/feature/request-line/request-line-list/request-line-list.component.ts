@@ -37,7 +37,7 @@ export class RequestLineListComponent implements OnInit {
 
   }
   submit() {
-    this.request.status = "Review";
+    this.request.status = this.request.total > 50 ? "Review" : "Approved";
     this.requestSvc.submit(this.request).subscribe(resp => {
       this.router.navigateByUrl('/request/list')
     });
